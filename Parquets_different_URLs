@@ -1,0 +1,35 @@
+# Import data from Parquet files stored at different URLs, one for each month of the year, 
+# into Pandas DataFrames using DuckDB, and then measures the time taken to complete this process.
+
+import pandas as pd
+import duckdb
+import time
+
+# Record the start time of the script's execution
+start_time = time.time()
+
+# Initialize an empty list to store data from each month
+all_data = []
+
+# Loop through numbers 1 to 12, representing each month
+for counter in range(1, 13):
+    # Convert month number to a two-digit string (e.g., '01' for January)
+    _month = str(counter).zfill(2)
+    
+    # Construct URL for each month's data file
+    _url = f"https://d37ci6vzurychx.cloudfront.net/trip_data/yellow_tripdata_2023_{_month}.parquet"
+    
+    # Query to read data from Parquet file using DuckDB and convert to DataFrame
+    _data = duckdb.query(f"SELECT * FROM read_parquet('{_url}')").to_df()
+    
+    # Append each month's DataFrame to the list
+    all_data.append(_data)
+
+# Record the end time of the script's execution
+end_time = time.time()
+
+# Calculate the execution time by subtracting start_time from end_time
+execution_time = end_time - start_time
+
+# Print the execution time in seconds
+print(f"Execution time: {execution_time} seconds")

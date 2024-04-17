@@ -14,5 +14,6 @@ Feel free to explore the projects, fork the repository, and reach out with any q
 ## Connect with Me
 
 - [LinkedIn](https://www.linkedin.com/in/brandon-walters-172b29208/) 
-- [Email](mailto:brandon.walters624@gmail.com) 
+- [Email](mailto:brandon.walters624@gmail.com)
+  
 Thank you for visiting my Data Science and Engineering portfolio!
